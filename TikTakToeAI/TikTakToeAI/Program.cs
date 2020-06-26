@@ -124,11 +124,11 @@ namespace TikTakToeAI
             whichToCheck.Add(0);
             whichToCheck.Add(0);
             whichToCheck.Add(0);
-            int value;
+            bool value;
             for(int i = 0; i < board.Count; i++)
             {
-                value = checkingIfEmpty(i, board);
-                if(i == 0 && value == 1)
+                value = checkingIfSelectedWindowIsEmpty(i, board);
+                if(i == 0 && value.Equals(true))
                 {
                     valueList.Add(0);
                     whichToCheck[0] = 0;
@@ -153,7 +153,7 @@ namespace TikTakToeAI
                 {
                     valueList.Add(0);
                 }
-                if (i == 1 && value == 1)
+                if (i == 1 && value.Equals(true))
                 {
                     valueList.Add(0);
                     whichToCheck[0] = 0;
@@ -172,7 +172,7 @@ namespace TikTakToeAI
                 {
                     valueList.Add(0);
                 }
-                if (i == 2 && value == 1)
+                if (i == 2 && value.Equals(true))
                 {
                     valueList.Add(0);
                     whichToCheck[0] = 0;
@@ -197,7 +197,7 @@ namespace TikTakToeAI
                 {
                     valueList.Add(0);
                 }
-                if (i == 3 && value == 1)
+                if (i == 3 && value.Equals(true))
                 {
                     valueList.Add(0);
                     whichToCheck[0] = 3;
@@ -216,7 +216,7 @@ namespace TikTakToeAI
                 {
                     valueList.Add(0);
                 }
-                if (i == 4 && value == 1)
+                if (i == 4 && value.Equals(true))
                 {
                     valueList.Add(0);
                     whichToCheck[0] = 3;
@@ -247,7 +247,7 @@ namespace TikTakToeAI
                 {
                     valueList.Add(0);
                 }
-                if (i == 5 && value == 1)
+                if (i == 5 && value.Equals(true))
                 {
                     valueList.Add(0);
                     whichToCheck[0] = 2;
@@ -266,7 +266,7 @@ namespace TikTakToeAI
                 {
                     valueList.Add(0);
                 }
-                if (i == 6 && value == 1)
+                if (i == 6 && value.Equals(true))
                 {
                     valueList.Add(0);
                     whichToCheck[0] = 0;
@@ -291,7 +291,7 @@ namespace TikTakToeAI
                 {
                     valueList.Add(0);
                 }
-                if (i == 7 && value == 1)
+                if (i == 7 && value.Equals(true))
                 {
                     valueList.Add(0);
                     whichToCheck[0] = 6;
@@ -310,7 +310,7 @@ namespace TikTakToeAI
                 {
                     valueList.Add(0);
                 }
-                if (i == 8 && value == 1)
+                if (i == 8 && value.Equals(true))
                 {
                     valueList.Add(0);
                     whichToCheck[0] = 2;
@@ -565,13 +565,10 @@ namespace TikTakToeAI
             }
             return placeInTheList;
         }
-        public int checkingIfEmpty(int whichToCheck, List<string> board)
+        public bool checkingIfSelectedWindowIsEmpty(int whichWindowToCheck, List<string> boardList)
         {
-            int isEmpty = 1;
-            if(board[whichToCheck] != " ")
-            {
-                isEmpty = 0;
-            }
+            bool isEmpty = true;
+            if(boardList[whichWindowToCheck] != " "){isEmpty = false;}
             return isEmpty;
         }
     }
