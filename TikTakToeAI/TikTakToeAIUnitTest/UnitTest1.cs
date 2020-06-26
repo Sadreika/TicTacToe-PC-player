@@ -6,88 +6,50 @@ namespace TikTakToeAIUnitTest
 {
     [TestClass]
     public class UnitTest1
-    {
-        TikTakToeAI.Program program = new TikTakToeAI.Program();
-        [TestMethod]
-        public void CountingHowManySymbols()
+    {    
+        public List<string> settingBoardList(List<string> board)
         {
-            TikTakToeAI.Program program = new TikTakToeAI.Program();
-            List<string> board = new List<string>();
-            for(int i = 0; i < 9; i++)
-            {
+            for (int i = 0; i < 9; i++){
                 board.Add(" ");
             }
-            board[0] = "X";
-            string symbol = "X";
-            List<int> whichToCheck = new List<int>();
-            whichToCheck.Add(0);
-            whichToCheck.Add(1);
-            whichToCheck.Add(2);
-            int result = program.countingHowManySymbolsInTheGivenRow(symbol, whichToCheck, board);
-
-            Assert.AreEqual(result, 1);
-        }
-        [TestMethod]
-        public void CountingHowManySymbols_2()
-        {
-            TikTakToeAI.Program program = new TikTakToeAI.Program();
-            List<string> board = new List<string>();
-            for (int i = 0; i < 9; i++)
-            {
-                board.Add(" ");
-            }
-            board[0] = "X";
-            board[1] = "X";
-            string symbol = "X";
-            List<int> whichToCheck = new List<int>();
-            whichToCheck.Add(0);
-            whichToCheck.Add(1);
-            whichToCheck.Add(2);
-            int result = program.countingHowManySymbolsInTheGivenRow(symbol, whichToCheck, board);
-
-            Assert.AreEqual(result, 2);
+            return board;
         }
 
         [TestMethod]
-        public void CountingHowManySymbols_3()
+        public void countingHowManyThereAreGivenSymbolIsInTheGivenRowUnitTest()
         {
             TikTakToeAI.Program program = new TikTakToeAI.Program();
             List<string> board = new List<string>();
-            for (int i = 0; i < 9; i++)
-            {
-                board.Add(" ");
-            }
-            board[0] = "X";
-            board[2] = "X";
-            string symbol = "X";
             List<int> whichToCheck = new List<int>();
-            whichToCheck.Add(0);
-            whichToCheck.Add(1);
-            whichToCheck.Add(2);
-            int result = program.countingHowManySymbolsInTheGivenRow(symbol, whichToCheck, board);
+            board = settingBoardList(board);
 
-            Assert.AreEqual(result, 2);
-        }
+            string symbol_X = "X";
+            string symbol_O = "O";
 
-        [TestMethod]
-        public void CountingHowManySymbols_4()
-        {
-            TikTakToeAI.Program program = new TikTakToeAI.Program();
-            List<string> board = new List<string>();
-            for (int i = 0; i < 9; i++)
-            {
-                board.Add(" ");
-            }
             board[0] = "X";
             board[1] = "O";
-            string symbol = "X";
-            List<int> whichToCheck = new List<int>();
+            board[2] = " ";
             whichToCheck.Add(0);
-            whichToCheck.Add(1);
-            whichToCheck.Add(2);
-            int result = program.countingHowManySymbolsInTheGivenRow(symbol, whichToCheck, board);
 
-            Assert.AreEqual(result, -1);
+            int result_1 = program.countingHowManyThereAreGivenSymbolIsInTheGivenRow(symbol_X, whichToCheck, board);
+            int result_2 = program.countingHowManyThereAreGivenSymbolIsInTheGivenRow(symbol_O, whichToCheck, board);
+
+            whichToCheck[0] = 1;
+
+            int result_3 = program.countingHowManyThereAreGivenSymbolIsInTheGivenRow(symbol_X, whichToCheck, board);
+            int result_4 = program.countingHowManyThereAreGivenSymbolIsInTheGivenRow(symbol_O, whichToCheck, board);
+
+            whichToCheck[0] = 2;
+
+            int result_5 = program.countingHowManyThereAreGivenSymbolIsInTheGivenRow(symbol_X, whichToCheck, board);
+            int result_6 = program.countingHowManyThereAreGivenSymbolIsInTheGivenRow(symbol_O, whichToCheck, board);
+
+            Assert.AreEqual(result_1, 1);
+            Assert.AreEqual(result_2, -1);
+            Assert.AreEqual(result_3, -1);
+            Assert.AreEqual(result_4, 1);
+            Assert.AreEqual(result_5, 0);
+            Assert.AreEqual(result_6, 0);
         }
 
         [TestMethod]
@@ -385,11 +347,9 @@ namespace TikTakToeAIUnitTest
             Assert.AreEqual(result, 8);
         }
 
-        [TestMethod]
+      /*  [TestMethod]
         public void WhereToGo_Final_4()
         {
-            TikTakToeAI.Program program = new TikTakToeAI.Program();
-            List<string> board = new List<string>();
             for (int i = 0; i < 9; i++)
             {
                 board.Add(" ");
@@ -407,13 +367,15 @@ namespace TikTakToeAIUnitTest
             int result = program.whereToGo(board);
 
             Assert.AreEqual(result, 3);
-        }
+        }*/
 
         [TestMethod]
         public void WhereToGo_Final_5()
         {
             TikTakToeAI.Program program = new TikTakToeAI.Program();
             List<string> board = new List<string>();
+            List<int> whichToCheck = new List<int>();
+            board = settingBoardList(board);
             for (int i = 0; i < 9; i++)
             {
                 board.Add(" ");
@@ -436,7 +398,10 @@ namespace TikTakToeAIUnitTest
         [TestMethod]
         public void checkingIfSelectedWindowIsEmpty()
         {
+            TikTakToeAI.Program program = new TikTakToeAI.Program();
             List<string> board = new List<string>();
+            List<int> whichToCheck = new List<int>();
+            board = settingBoardList(board);
             board.Add(" ");
             board[0] = "X";
             bool result_1 = program.checkingIfSelectedWindowIsEmpty(0, board);

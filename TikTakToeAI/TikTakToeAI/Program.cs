@@ -24,15 +24,15 @@ namespace TikTakToeAI
             {
                 board.Add(" ");
             }
-            board[0] = "O";
+            board[0] = " ";
             board[1] = " ";
-            board[2] = "X";
-            board[3] = "X";
-            board[4] = "O";
-            board[5] = "O";
+            board[2] = " ";
+            board[3] = " ";
+            board[4] = " ";
+            board[5] = " ";
             board[6] = " ";
-            board[7] = "X";
-            board[8] = "X";
+            board[7] = " ";
+            board[8] = " ";
             var finalValue = programObject.whereToGo(board);
             Console.WriteLine(finalValue);
 
@@ -75,7 +75,7 @@ namespace TikTakToeAI
                 whichToCheck[0] = i;
                 whichToCheck[1] = i + 1;
                 whichToCheck[2] = i + 2;
-                howMuch = countingHowManyGivenSymbolIsInTheGivenRow_1("O", whichToCheck, board);
+                howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
                 if (howMuch == 2)
                 {
                     willIWin = true;
@@ -88,7 +88,7 @@ namespace TikTakToeAI
                 whichToCheck[0] = i;
                 whichToCheck[1] = i + 3;
                 whichToCheck[2] = i + 6;
-                howMuch = countingHowManySymbolsInTheGivenRow("O", whichToCheck, board);
+                howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
                 if (howMuch == 2)
                 {
                     willIWin = true;
@@ -99,7 +99,7 @@ namespace TikTakToeAI
             whichToCheck[0] = 0;
             whichToCheck[1] = 4;
             whichToCheck[2] = 8;
-            howMuch = countingHowManySymbolsInTheGivenRow("O", whichToCheck, board);
+            howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
             if (howMuch == 2)
             {
                 willIWin = true;
@@ -108,7 +108,7 @@ namespace TikTakToeAI
             whichToCheck[0] = 2;
             whichToCheck[1] = 4;
             whichToCheck[2] = 6;
-            howMuch = countingHowManySymbolsInTheGivenRow("O", whichToCheck, board);
+            howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
             if (howMuch == 2)
             {
                 willIWin = true;
@@ -399,7 +399,7 @@ namespace TikTakToeAI
                 whichToCheck[0] = i;
                 whichToCheck[1] = i + 1;
                 whichToCheck[2] = i + 2;
-                howMuch = countingHowManySymbolsInTheGivenRow("X", whichToCheck, board);
+                howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("X", whichToCheck, board);
                 if(howMuch == 2)
                 {
                     willWin = true;
@@ -412,7 +412,7 @@ namespace TikTakToeAI
                 whichToCheck[0] = i;
                 whichToCheck[1] = i + 3;
                 whichToCheck[2] = i + 6;
-                howMuch = countingHowManySymbolsInTheGivenRow("X", whichToCheck, board);
+                howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("X", whichToCheck, board);
                 if (howMuch == 2)
                 {
                     willWin = true;
@@ -423,7 +423,7 @@ namespace TikTakToeAI
             whichToCheck[0] = 0;
             whichToCheck[1] = 4;
             whichToCheck[2] = 8;
-            howMuch = countingHowManySymbolsInTheGivenRow("X", whichToCheck, board);
+            howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("X", whichToCheck, board);
             if (howMuch == 2)
             {
                 willWin = true;
@@ -432,7 +432,7 @@ namespace TikTakToeAI
             whichToCheck[0] = 2;
             whichToCheck[1] = 4;
             whichToCheck[2] = 6;
-            howMuch = countingHowManySymbolsInTheGivenRow("X", whichToCheck, board);
+            howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("X", whichToCheck, board);
             if (howMuch == 2)
             {
                 willWin = true;
@@ -455,7 +455,7 @@ namespace TikTakToeAI
                 whichToCheck[0] = i;
                 whichToCheck[1] = i + 1;
                 whichToCheck[2] = i + 2;
-                howMuch = countingHowManySymbolsInTheGivenRow("O", whichToCheck, board);
+                howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
                 if (howMuch == 2)
                 {
                     willWin = true;
@@ -468,7 +468,7 @@ namespace TikTakToeAI
                 whichToCheck[0] = i;
                 whichToCheck[1] = i + 3;
                 whichToCheck[2] = i + 6;
-                howMuch = countingHowManySymbolsInTheGivenRow("O", whichToCheck, board);
+                howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
                 if (howMuch == 2)
                 {
                     willWin = true;
@@ -479,7 +479,7 @@ namespace TikTakToeAI
             whichToCheck[0] = 0;
             whichToCheck[1] = 4;
             whichToCheck[2] = 8;
-            howMuch = countingHowManySymbolsInTheGivenRow("O", whichToCheck, board);
+            howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
             if (howMuch == 2)
             {
                 willWin = true;
@@ -488,66 +488,40 @@ namespace TikTakToeAI
             whichToCheck[0] = 2;
             whichToCheck[1] = 4;
             whichToCheck[2] = 6;
-            howMuch = countingHowManySymbolsInTheGivenRow("O", whichToCheck, board);
+            howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
             if (howMuch == 2)
             {
                 willWin = true;
             }
             return willWin;
         }
-        public int countingHowManySymbolsInTheGivenRow(string symbol, List<int> whichToCheck, List<string> board)
+
+        public int countingHowManyThereAreGivenSymbolIsInTheGivenRow(string givenSymbol, List<int> listOfWindowsWhichNeedToCheck, List<string> boardList)
         {
             int howManySymbols = 0;
             int possiblePlace = -1;
-
-            for(int i = 0; i < whichToCheck.Count; i++)
+            for (int i = 0; i < listOfWindowsWhichNeedToCheck.Count; i++)
             {
-                if(board[whichToCheck[i]].Equals(symbol))
-                {
+                if (boardList[listOfWindowsWhichNeedToCheck[i]].Equals(givenSymbol)){
                     howManySymbols = howManySymbols + 1;
                 }
-                if(board[whichToCheck[i]].Equals(" "))
-                {
-                    possiblePlace = whichToCheck[i];
+                if (boardList[listOfWindowsWhichNeedToCheck[i]].Equals(" ")){
+                    possiblePlace = listOfWindowsWhichNeedToCheck[i];
                 }
-                if (board[whichToCheck[i]].Equals("O"))
-                {
-                    howManySymbols = -1;
-                    break;
+                if(givenSymbol.Equals("X")){
+                    if (boardList[listOfWindowsWhichNeedToCheck[i]].Equals("O")){
+                        howManySymbols = -1;
+                        break;
+                    }
                 }
-                
+                else if(givenSymbol.Equals("O")){
+                    if (boardList[listOfWindowsWhichNeedToCheck[i]].Equals("X")){
+                        howManySymbols = -1;
+                        break;
+                    }
+                }
             }
-            if(howManySymbols == 2)
-            {
-                setWhereToGo(possiblePlace);
-            }
-            return howManySymbols;
-        }
-
-        public int countingHowManyGivenSymbolIsInTheGivenRow_1(string symbol, List<int> whichToCheck, List<string> board)
-        {
-            int howManySymbols = 0;
-            int possiblePlace = -1;
-
-            for (int i = 0; i < whichToCheck.Count; i++)
-            {
-                if (board[whichToCheck[i]].Equals(symbol))
-                {
-                    howManySymbols = howManySymbols + 1;
-                }
-                if (board[whichToCheck[i]].Equals(" "))
-                {
-                    possiblePlace = whichToCheck[i];
-                }
-                if (board[whichToCheck[i]].Equals("X"))
-                {
-                    howManySymbols = -1;
-                    break;
-                }
-
-            }
-            if (howManySymbols == 2)
-            {
+            if (howManySymbols == 2){
                 setWhereToGo(possiblePlace);
             }
             return howManySymbols;
