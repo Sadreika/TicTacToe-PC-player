@@ -552,19 +552,7 @@ namespace TikTakToeAI
             }
             return howManySymbols;
         }
-        public int checkingWhichOneIsEmpty(List<int> whichToCheck, List<string> board)
-        {
-            int placeInTheList = 0;
 
-            for (int i = 0; i < whichToCheck.Count; i++)
-            {
-                if (board[whichToCheck[i]].Equals(" "))
-                {
-                    placeInTheList = whichToCheck[i];
-                }
-            }
-            return placeInTheList;
-        }
         public bool checkingIfSelectedWindowIsEmpty(int whichWindowToCheck, List<string> boardList)
         {
             bool isEmpty = true;
