@@ -19,3 +19,16 @@ C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitT
 C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\obj\Debug\TikTakToeAIUnitTest.csproj.CoreCompileInputs.cache
 C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\obj\Debug\TikTakToeAIUnitTest.dll
 C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\obj\Debug\TikTakToeAIUnitTest.pdb
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\bin\Debug\TikTakToeAIUnitTest.dll
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\bin\Debug\TikTakToeAIUnitTest.pdb
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\bin\Debug\TikTakToeAI.exe
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\bin\Debug\TikTakToeAI.pdb
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\bin\Debug\TikTakToeAI.exe.config
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\obj\Debug\TikTakToeAIUnitTest.csproj.CopyComplete

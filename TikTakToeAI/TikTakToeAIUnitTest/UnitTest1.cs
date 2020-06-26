@@ -7,6 +7,7 @@ namespace TikTakToeAIUnitTest
     [TestClass]
     public class UnitTest1
     {
+        TikTakToeAI.Program program = new TikTakToeAI.Program();
         [TestMethod]
         public void CountingHowManySymbols()
         {
@@ -104,9 +105,9 @@ namespace TikTakToeAIUnitTest
             whichToCheck.Add(0);
             whichToCheck.Add(1);
             whichToCheck.Add(2);
-            int result = program.checkingWhichOneIsEmpty(whichToCheck, board);
+            //int result = program.checkingWhichOneIsEmpty(whichToCheck, board);
 
-            Assert.AreEqual(result, 2);
+            //Assert.AreEqual(result, 2);
         }
 
         [TestMethod]
@@ -430,6 +431,23 @@ namespace TikTakToeAIUnitTest
             int result = program.whereToGo(board);
 
             Assert.AreEqual(result, 4);
+        }
+
+        [TestMethod]
+        public void checkingIfSelectedWindowIsEmpty()
+        {
+            List<string> board = new List<string>();
+            board.Add(" ");
+            board[0] = "X";
+            bool result_1 = program.checkingIfSelectedWindowIsEmpty(0, board);
+            board[0] = "O";
+            bool result_2 = program.checkingIfSelectedWindowIsEmpty(0, board);
+            board[0] = " ";
+            bool result_3 = program.checkingIfSelectedWindowIsEmpty(0, board);
+
+            Assert.AreEqual(result_1, false);
+            Assert.AreEqual(result_2, false);
+            Assert.AreEqual(result_3, true);
         }
     }
 }
