@@ -15,3 +15,7 @@ C:\Users\mariu\Documents\GitHub\TikTakToeAI\TikTakToeAIUnitTest\obj\Debug\TikTak
 C:\Users\mariu\Documents\GitHub\TikTakToeAI\TikTakToeAIUnitTest\obj\Debug\TikTakToeAIUnitTest.csproj.CopyComplete
 C:\Users\mariu\Documents\GitHub\TikTakToeAI\TikTakToeAIUnitTest\obj\Debug\TikTakToeAIUnitTest.dll
 C:\Users\mariu\Documents\GitHub\TikTakToeAI\TikTakToeAIUnitTest\obj\Debug\TikTakToeAIUnitTest.pdb
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\obj\Debug\TikTakToeAIUnitTest.csprojAssemblyReference.cache
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\obj\Debug\TikTakToeAIUnitTest.csproj.CoreCompileInputs.cache
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\obj\Debug\TikTakToeAIUnitTest.dll
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAIUnitTest\obj\Debug\TikTakToeAIUnitTest.pdb

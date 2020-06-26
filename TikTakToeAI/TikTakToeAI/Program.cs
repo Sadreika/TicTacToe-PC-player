@@ -75,7 +75,7 @@ namespace TikTakToeAI
                 whichToCheck[0] = i;
                 whichToCheck[1] = i + 1;
                 whichToCheck[2] = i + 2;
-                howMuch = countingHowManySymbolsInTheGivenRow_1("O", whichToCheck, board);
+                howMuch = countingHowManyGivenSymbolIsInTheGivenRow_1("O", whichToCheck, board);
                 if (howMuch == 2)
                 {
                     willIWin = true;
@@ -524,7 +524,7 @@ namespace TikTakToeAI
             return howManySymbols;
         }
 
-        public int countingHowManySymbolsInTheGivenRow_1(string symbol, List<int> whichToCheck, List<string> board)
+        public int countingHowManyGivenSymbolIsInTheGivenRow_1(string symbol, List<int> whichToCheck, List<string> board)
         {
             int howManySymbols = 0;
             int possiblePlace = -1;

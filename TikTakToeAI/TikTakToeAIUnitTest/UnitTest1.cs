@@ -431,29 +431,5 @@ namespace TikTakToeAIUnitTest
 
             Assert.AreEqual(result, 4);
         }
-
-     //   [TestMethod]
-        public void WhereToGo_Final_6()
-        {
-            TikTakToeAI.Program program = new TikTakToeAI.Program();
-            List<string> board = new List<string>();
-            for (int i = 0; i < 9; i++)
-            {
-                board.Add(" ");
-            }
-            board[0] = " ";
-            board[1] = " ";
-            board[2] = " ";
-            board[3] = " ";
-            board[4] = " ";
-            board[5] = " ";
-            board[6] = " ";
-            board[7] = " ";
-            board[8] = " ";
-
-            int result = program.whereToGo(board);
-
-            Assert.AreEqual(result, 1);
-        }
     }
 }
