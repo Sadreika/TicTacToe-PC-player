@@ -10,14 +10,12 @@ namespace TikTakToeAI
     public class Program
     {
         public int valueWhereToGo = -1;
-        public void setWhereToGo(int value)
-        {
+        public void setWhereToGo(int value){
             valueWhereToGo = value;
         }
 
         static void Main(string[] args)
         {
-            //Rekomenduojama pradeti nuo random vietos. Bus idomiau, bet gali nukenteti laimejimu rezultatas
             List<string> board = new List<string>();
             Program programObject = new Program();
             for(int i = 0; i < 9; i++)
@@ -39,9 +37,9 @@ namespace TikTakToeAI
         }
         public int whereToGo(List<string> board)
         {
+            string pcPlayerSymbol = "O";
             int placeInTheListWhereToGo;
-            // bool willWin = checkingIfOtherPlayerWillWinNextTurn_2(board); kai zaidiama su priesingais zenklais
-            bool willWin = checkingIfOtherPlayerWillWinNextTurn(board);
+            bool willWin = checkingIfOtherPlayerWillWinNextTurn(pcPlayerSymbol, board);
             bool willIWin = checkingIfIWin(board);
 
             if(willIWin.Equals(true))
@@ -384,118 +382,61 @@ namespace TikTakToeAI
             }
             return howMany;
         }
-        public bool checkingIfOtherPlayerWillWinNextTurn(List<string> board)
+        public bool checkingIfOtherPlayerWillWinNextTurn(string pcPlayerSymbol, List<string> boardList)
         {
-            
+            string enemieSymbol = "";
+            if(pcPlayerSymbol.Equals("O")){
+                enemieSymbol = "X";
+            }
+            else{
+                enemieSymbol = "O";
+            }
             bool willWin = false;
-            List<int> whichToCheck = new List<int>();
-            whichToCheck.Add(0);
-            whichToCheck.Add(0);
-            whichToCheck.Add(0);
-            int howMuch = 0;
+            List<int> whichWindowsNeedToCheck = new List<int>();
+            whichWindowsNeedToCheck.Add(0);
+            whichWindowsNeedToCheck.Add(0);
+            whichWindowsNeedToCheck.Add(0);
+            int howMany;
     
-            for (int i = 0; i < 9; i = i + 3)
-            {
-                whichToCheck[0] = i;
-                whichToCheck[1] = i + 1;
-                whichToCheck[2] = i + 2;
-                howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("X", whichToCheck, board);
-                if(howMuch == 2)
-                {
+            for (int i = 0; i < 9; i = i + 3){
+                whichWindowsNeedToCheck[0] = i;
+                whichWindowsNeedToCheck[1] = i + 1;
+                whichWindowsNeedToCheck[2] = i + 2;
+                howMany = countingHowManyThereAreGivenSymbolIsInTheGivenRow(enemieSymbol, whichWindowsNeedToCheck, boardList);
+                if(howMany == 2){
                     willWin = true;
                     break;
                 }    
             }
 
-            for(int i = 0; i < 3; i = i + 1)
-            {
-                whichToCheck[0] = i;
-                whichToCheck[1] = i + 3;
-                whichToCheck[2] = i + 6;
-                howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("X", whichToCheck, board);
-                if (howMuch == 2)
-                {
+            for(int i = 0; i < 3; i = i + 1){
+                whichWindowsNeedToCheck[0] = i;
+                whichWindowsNeedToCheck[1] = i + 3;
+                whichWindowsNeedToCheck[2] = i + 6;
+                howMany = countingHowManyThereAreGivenSymbolIsInTheGivenRow(enemieSymbol, whichWindowsNeedToCheck, boardList);
+                if (howMany == 2){
                     willWin = true;
                     break;
                 }
             }
 
-            whichToCheck[0] = 0;
-            whichToCheck[1] = 4;
-            whichToCheck[2] = 8;
-            howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("X", whichToCheck, board);
-            if (howMuch == 2)
-            {
+            whichWindowsNeedToCheck[0] = 0;
+            whichWindowsNeedToCheck[1] = 4;
+            whichWindowsNeedToCheck[2] = 8;
+            howMany = countingHowManyThereAreGivenSymbolIsInTheGivenRow(enemieSymbol, whichWindowsNeedToCheck, boardList);
+            if (howMany == 2){
                 willWin = true;
             }
 
-            whichToCheck[0] = 2;
-            whichToCheck[1] = 4;
-            whichToCheck[2] = 6;
-            howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("X", whichToCheck, board);
-            if (howMuch == 2)
-            {
+            whichWindowsNeedToCheck[0] = 2;
+            whichWindowsNeedToCheck[1] = 4;
+            whichWindowsNeedToCheck[2] = 6;
+            howMany = countingHowManyThereAreGivenSymbolIsInTheGivenRow(enemieSymbol, whichWindowsNeedToCheck, boardList);
+            if (howMany == 2){
                 willWin = true;
             }
             return willWin;
         }
-
-        public bool checkingIfOtherPlayerWillWinNextTurn_2(List<string> board)
-        {
-
-            bool willWin = false;
-            List<int> whichToCheck = new List<int>();
-            whichToCheck.Add(0);
-            whichToCheck.Add(0);
-            whichToCheck.Add(0);
-            int howMuch = 0;
-
-            for (int i = 0; i < 9; i = i + 3)
-            {
-                whichToCheck[0] = i;
-                whichToCheck[1] = i + 1;
-                whichToCheck[2] = i + 2;
-                howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
-                if (howMuch == 2)
-                {
-                    willWin = true;
-                    break;
-                }
-            }
-
-            for (int i = 0; i < 3; i = i + 1)
-            {
-                whichToCheck[0] = i;
-                whichToCheck[1] = i + 3;
-                whichToCheck[2] = i + 6;
-                howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
-                if (howMuch == 2)
-                {
-                    willWin = true;
-                    break;
-                }
-            }
-
-            whichToCheck[0] = 0;
-            whichToCheck[1] = 4;
-            whichToCheck[2] = 8;
-            howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
-            if (howMuch == 2)
-            {
-                willWin = true;
-            }
-
-            whichToCheck[0] = 2;
-            whichToCheck[1] = 4;
-            whichToCheck[2] = 6;
-            howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
-            if (howMuch == 2)
-            {
-                willWin = true;
-            }
-            return willWin;
-        }
-
         public int countingHowManyThereAreGivenSymbolIsInTheGivenRow(string givenSymbol, List<int> listOfWindowsWhichNeedToCheck, List<string> boardList)
         {
             int howManySymbols = 0;
@@ -526,7 +467,6 @@ namespace TikTakToeAI
             }
             return howManySymbols;
         }
-
         public bool checkingIfSelectedWindowIsEmpty(int whichWindowToCheck, List<string> boardList)
         {
             bool isEmpty = true;
