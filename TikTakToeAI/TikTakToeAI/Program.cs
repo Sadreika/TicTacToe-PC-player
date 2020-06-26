@@ -499,14 +499,14 @@ namespace TikTakToeAI
         public int countingHowManyThereAreGivenSymbolIsInTheGivenRow(string givenSymbol, List<int> listOfWindowsWhichNeedToCheck, List<string> boardList)
         {
             int howManySymbols = 0;
-            int possiblePlace = -1;
+            int windowWhichNeedToTake = -1;
             for (int i = 0; i < listOfWindowsWhichNeedToCheck.Count; i++)
             {
                 if (boardList[listOfWindowsWhichNeedToCheck[i]].Equals(givenSymbol)){
                     howManySymbols = howManySymbols + 1;
                 }
                 if (boardList[listOfWindowsWhichNeedToCheck[i]].Equals(" ")){
-                    possiblePlace = listOfWindowsWhichNeedToCheck[i];
+                    windowWhichNeedToTake = listOfWindowsWhichNeedToCheck[i];
                 }
                 if(givenSymbol.Equals("X")){
                     if (boardList[listOfWindowsWhichNeedToCheck[i]].Equals("O")){
@@ -522,7 +522,7 @@ namespace TikTakToeAI
                 }
             }
             if (howManySymbols == 2){
-                setWhereToGo(possiblePlace);
+                setWhereToGo(windowWhichNeedToTake);
             }
             return howManySymbols;
         }
