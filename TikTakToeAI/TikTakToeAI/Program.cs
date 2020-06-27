@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TikTakToeAI
 {
@@ -13,7 +9,6 @@ namespace TikTakToeAI
         public void setWhereToGo(int value){
             valueWhereToGo = value;
         }
-
         static void Main(string[] args)
         {
             List<string> board = new List<string>();
@@ -22,133 +17,73 @@ namespace TikTakToeAI
             {
                 board.Add(" ");
             }
-            board[0] = " ";
-            board[1] = " ";
-            board[2] = " ";
+            board[0] = "X";
+            board[1] = "O";
+            board[2] = "X";
             board[3] = " ";
-            board[4] = " ";
+            board[4] = "O";
             board[5] = " ";
-            board[6] = " ";
-            board[7] = " ";
-            board[8] = " ";
+            board[6] = "O";
+            board[7] = "X";
+            board[8] = "X";
             var finalValue = programObject.whereToGo(board);
             Console.WriteLine(finalValue);
-
         }
         public int whereToGo(List<string> board)
         {
-            string pcPlayerSymbol = "O";
+            string pcSymbol = "O";
+            string enemieSymbol = "X";
             int placeInTheListWhereToGo;
-            bool willWin = checkingIfOtherPlayerWillWinNextTurn(pcPlayerSymbol, board);
-            bool willIWin = checkingIfIWin(board);
+            bool willIWin = checkingIfOtherPlayerWillWinNextTurn(enemieSymbol, board);
+            bool willWin = checkingIfOtherPlayerWillWinNextTurn(pcSymbol, board);
 
-            if(willIWin.Equals(true))
-            {
+            if(willIWin.Equals(true)){
                 placeInTheListWhereToGo = valueWhereToGo;
                 setWhereToGo(-1);
             }
-            else if(willWin.Equals(true))
-            {
+            else if(willWin.Equals(true)){
                 placeInTheListWhereToGo = valueWhereToGo;
                 setWhereToGo(-1);
             }
-            else
-            {
+            else{
                 placeInTheListWhereToGo = bestPlaceToTake(board);
             }
 
             return placeInTheListWhereToGo;
         }
-        public bool checkingIfIWin(List<string> board)
+        public int bestPlaceToTake(List<string>boardList)
         {
-            bool willIWin = false;
-            List<int> whichToCheck = new List<int>();
-            whichToCheck.Add(0);
-            whichToCheck.Add(0);
-            whichToCheck.Add(0);
-            int howMuch = 0;
-
-            for (int i = 0; i < 9; i = i + 3)
-            {
-                whichToCheck[0] = i;
-                whichToCheck[1] = i + 1;
-                whichToCheck[2] = i + 2;
-                howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
-                if (howMuch == 2)
-                {
-                    willIWin = true;
-                    break;
-                }
-            }
-
-            for (int i = 0; i < 3; i = i + 1)
-            {
-                whichToCheck[0] = i;
-                whichToCheck[1] = i + 3;
-                whichToCheck[2] = i + 6;
-                howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
-                if (howMuch == 2)
-                {
-                    willIWin = true;
-                    break;
-                }
-            }
-
-            whichToCheck[0] = 0;
-            whichToCheck[1] = 4;
-            whichToCheck[2] = 8;
-            howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
-            if (howMuch == 2)
-            {
-                willIWin = true;
-            }
-
-            whichToCheck[0] = 2;
-            whichToCheck[1] = 4;
-            whichToCheck[2] = 6;
-            howMuch = countingHowManyThereAreGivenSymbolIsInTheGivenRow("O", whichToCheck, board);
-            if (howMuch == 2)
-            {
-                willIWin = true;
-            }
-            return willIWin;
-        }
-        public int bestPlaceToTake(List<string>board)
-        {
-            int placeToTake = -1;
-            int howManyPossibleFields = 0;
+            int placeToTake;
+            int howManyPossibleFields;
             List<int> valueList = new List<int>();
             List<int> whichToCheck = new List<int>();
             whichToCheck.Add(0);
             whichToCheck.Add(0);
             whichToCheck.Add(0);
             bool value;
-            for(int i = 0; i < board.Count; i++)
-            {
-                value = checkingIfSelectedWindowIsEmpty(i, board);
-                if(i == 0 && value.Equals(true))
-                {
+            for(int i = 0; i < boardList.Count; i++){
+                value = checkingIfSelectedWindowIsEmpty(i, boardList);
+                if(i == 0 && value.Equals(true)){
                     valueList.Add(0);
                     whichToCheck[0] = 0;
                     whichToCheck[1] = 1;
                     whichToCheck[2] = 2;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
 
                     whichToCheck[0] = 0;
                     whichToCheck[1] = 3;
                     whichToCheck[2] = 6;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
                   
                     whichToCheck[0] = 0;
                     whichToCheck[1] = 4;
                     whichToCheck[2] = 8;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
                 }
-                else if (i == 0)
-                {
+                else if (i == 0){
                     valueList.Add(0);
                 }
                 if (i == 1 && value.Equals(true))
@@ -157,17 +92,16 @@ namespace TikTakToeAI
                     whichToCheck[0] = 0;
                     whichToCheck[1] = 1;
                     whichToCheck[2] = 2;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
 
                     whichToCheck[0] = 1;
                     whichToCheck[1] = 2;
                     whichToCheck[2] = 7;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
                 }
-                else if (i == 1)
-                {
+                else if (i == 1){
                     valueList.Add(0);
                 }
                 if (i == 2 && value.Equals(true))
@@ -176,19 +110,19 @@ namespace TikTakToeAI
                     whichToCheck[0] = 0;
                     whichToCheck[1] = 1;
                     whichToCheck[2] = 2;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
 
                     whichToCheck[0] = 2;
                     whichToCheck[1] = 5;
                     whichToCheck[2] = 8;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
 
                     whichToCheck[0] = 2;
                     whichToCheck[1] = 4;
                     whichToCheck[2] = 6;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
                 }
                 else if (i == 2)
@@ -201,13 +135,13 @@ namespace TikTakToeAI
                     whichToCheck[0] = 3;
                     whichToCheck[1] = 4;
                     whichToCheck[2] = 5;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
 
                     whichToCheck[0] = 0;
                     whichToCheck[1] = 3;
                     whichToCheck[2] = 6;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
                 }
                 else if (i == 3)
@@ -220,25 +154,25 @@ namespace TikTakToeAI
                     whichToCheck[0] = 3;
                     whichToCheck[1] = 4;
                     whichToCheck[2] = 5;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
 
                     whichToCheck[0] = 1;
                     whichToCheck[1] = 4;
                     whichToCheck[2] = 7;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
 
                     whichToCheck[0] = 0;
                     whichToCheck[1] = 4;
                     whichToCheck[2] = 8;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
 
                     whichToCheck[0] = 2;
                     whichToCheck[1] = 4;
                     whichToCheck[2] = 6;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
                 }
                 else if(i == 4)
@@ -251,13 +185,13 @@ namespace TikTakToeAI
                     whichToCheck[0] = 2;
                     whichToCheck[1] = 5;
                     whichToCheck[2] = 8;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
 
                     whichToCheck[0] = 3;
                     whichToCheck[1] = 4;
                     whichToCheck[2] = 5;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
                 }
                 else if (i == 5)
@@ -270,19 +204,19 @@ namespace TikTakToeAI
                     whichToCheck[0] = 0;
                     whichToCheck[1] = 3;
                     whichToCheck[2] = 6;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
 
                     whichToCheck[0] = 6;
                     whichToCheck[1] = 7;
                     whichToCheck[2] = 8;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
 
                     whichToCheck[0] = 6;
                     whichToCheck[1] = 4;
                     whichToCheck[2] = 2;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
                 }
                 else if (i == 6)
@@ -295,13 +229,13 @@ namespace TikTakToeAI
                     whichToCheck[0] = 6;
                     whichToCheck[1] = 7;
                     whichToCheck[2] = 8;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
 
                     whichToCheck[0] = 1;
                     whichToCheck[1] = 4;
                     whichToCheck[2] = 7;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
                 }
                 else if (i == 7)
@@ -314,19 +248,19 @@ namespace TikTakToeAI
                     whichToCheck[0] = 2;
                     whichToCheck[1] = 5;
                     whichToCheck[2] = 8;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
 
                     whichToCheck[0] = 6;
                     whichToCheck[1] = 7;
                     whichToCheck[2] = 8;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
 
                     whichToCheck[0] = 0;
                     whichToCheck[1] = 4;
                     whichToCheck[2] = 8;
-                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, board);
+                    howManyPossibleFields = countingHowManyPossibleFields(whichToCheck, boardList);
                     valueList[i] = valueList[i] + howManyPossibleFields;
                 }
                 else if (i == 8)
@@ -336,46 +270,52 @@ namespace TikTakToeAI
             }
             int maxindex = 0;
             int maxvalue = valueList[0];
-            for (int i = 1; i < valueList.Count; i++)
-            {
-                if(maxvalue < valueList[i])
-                {
+            for (int i = 1; i < valueList.Count; i++){
+                if(maxvalue < valueList[i]){
                     maxvalue = valueList[i];
                     maxindex = i;
                 }
             }
+            int lastWindow = lastEmptyWindow(boardList);
+            if(lastWindow == -1){
+                placeToTake = maxindex;
+            }
+            else{
+                placeToTake = lastWindow;
+            } 
+            return placeToTake;
+        }
+        public int lastEmptyWindow(List<string>boardList)
+        {
+            int placeToTake;
             int countOfEmptyPlaces = 0;
             int lastEmptySpot = 0;
-            for(int i = 0; i < board.Count; i++)
+            for (int i = 0; i < boardList.Count; i++)
             {
-                if(board[i] == " ")
+                if (boardList[i].Equals(" "))
                 {
                     countOfEmptyPlaces = countOfEmptyPlaces + 1;
                     lastEmptySpot = i;
-                }    
+                }
             }
-            if(countOfEmptyPlaces == 1)
+            if (countOfEmptyPlaces == 1)
             {
                 placeToTake = lastEmptySpot;
             }
             else
             {
-                placeToTake = maxindex;
+                placeToTake = -1;
             }
-            
             return placeToTake;
         }
-        public int countingHowManyPossibleFields(List<int> whichToCheck, List<string>board)
+        public int countingHowManyPossibleFields(List<int> whichWindowToCheck, List<string>boardList)
         {
             int howMany = 0;
-            for(int i = 0; i < whichToCheck.Count; i++)
-            {
-                if(board[whichToCheck[i]].Equals(" ") || board[whichToCheck[i]].Equals("O"))
-                {
+            for(int i = 0; i < whichWindowToCheck.Count; i++){
+                if(boardList[whichWindowToCheck[i]].Equals(" ") || boardList[whichWindowToCheck[i]].Equals("O")){
                     howMany = howMany + 1;
                 }
-                if(board[whichToCheck[i]].Equals("X"))
-                {
+                if(boardList[whichWindowToCheck[i]].Equals("X")){
                     howMany = 0;
                     break;
                 }

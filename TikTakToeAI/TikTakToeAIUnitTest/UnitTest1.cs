@@ -346,5 +346,21 @@ namespace TikTakToeAIUnitTest
             Assert.AreEqual(result_2, false);
             Assert.AreEqual(result_3, true);
         }
+        [TestMethod]
+        public void lastEmptyWindow()
+        {
+            TikTakToeAI.Program program = new TikTakToeAI.Program();
+            List<string> board = new List<string>();
+            List<int> whichToCheck = new List<int>();
+            board = settingBoardList(board);
+            for(int i = 0; i < 9; i++){
+                board.Add(" ");
+            }
+
+            board[0] = "O";
+            int result_2 = program.lastEmptyWindow(board);
+            Assert.AreEqual(result_2, -1);
+        }
     }
+
 }
