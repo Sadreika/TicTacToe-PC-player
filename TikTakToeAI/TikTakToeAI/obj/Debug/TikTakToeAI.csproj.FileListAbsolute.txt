@@ -5,3 +5,10 @@ C:\Users\mariu\Documents\GitHub\TikTakToeAI\TikTakToeAI\obj\Debug\TikTakToeAI.cs
 C:\Users\mariu\Documents\GitHub\TikTakToeAI\TikTakToeAI\obj\Debug\TikTakToeAI.csproj.CoreCompileInputs.cache
 C:\Users\mariu\Documents\GitHub\TikTakToeAI\TikTakToeAI\obj\Debug\TikTakToeAI.exe
 C:\Users\mariu\Documents\GitHub\TikTakToeAI\TikTakToeAI\obj\Debug\TikTakToeAI.pdb
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAI\obj\Debug\TikTakToeAI.csprojAssemblyReference.cache
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAI\obj\Debug\TikTakToeAI.csproj.CoreCompileInputs.cache
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAI\obj\Debug\TikTakToeAI.exe
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAI\obj\Debug\TikTakToeAI.pdb
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAI\bin\Debug\TikTakToeAI.exe.config
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAI\bin\Debug\TikTakToeAI.exe
+C:\Users\mariu\Documents\GitHub\TicTacToe-PC-player\TikTakToeAI\TikTakToeAI\bin\Debug\TikTakToeAI.pdb
