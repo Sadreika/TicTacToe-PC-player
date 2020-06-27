@@ -13,40 +13,46 @@ namespace TikTakToeAI
         {
             List<string> board = new List<string>();
             Program programObject = new Program();
-            for(int i = 0; i < 9; i++)
+            string pcSymbol = "O";
+            string enemieSymbol = "X";
+            for (int i = 0; i < 9; i++)
             {
                 board.Add(" ");
             }
             board[0] = "X";
-            board[1] = "O";
-            board[2] = "X";
-            board[3] = " ";
+            board[1] = " ";
+            board[2] = " ";
+            board[3] = "X";
             board[4] = "O";
-            board[5] = " ";
-            board[6] = "O";
-            board[7] = "X";
-            board[8] = "X";
-            var finalValue = programObject.whereToGo(board);
+            board[5] = "X";
+            board[6] = " ";
+            board[7] = "O";
+            board[8] = " ";
+            var finalValue = programObject.whereToGo(board, pcSymbol, enemieSymbol);
             Console.WriteLine(finalValue);
         }
-        public int whereToGo(List<string> board)
+        public int whereToGo(List<string> board, string pcSymbol, string enemieSymbol)
         {
-            string pcSymbol = "O";
-            string enemieSymbol = "X";
+            
             int placeInTheListWhereToGo;
             bool willIWin = checkingIfOtherPlayerWillWinNextTurn(enemieSymbol, board);
-            bool willWin = checkingIfOtherPlayerWillWinNextTurn(pcSymbol, board);
-
-            if(willIWin.Equals(true)){
+            if (willIWin.Equals(true))
+            {
                 placeInTheListWhereToGo = valueWhereToGo;
                 setWhereToGo(-1);
             }
-            else if(willWin.Equals(true)){
-                placeInTheListWhereToGo = valueWhereToGo;
-                setWhereToGo(-1);
-            }
-            else{
-                placeInTheListWhereToGo = bestPlaceToTake(board);
+            else
+            {
+                bool willWin = checkingIfOtherPlayerWillWinNextTurn(pcSymbol, board);
+                if (willWin.Equals(true))
+                {
+                    placeInTheListWhereToGo = valueWhereToGo;
+                    setWhereToGo(-1);
+                }
+                else
+                {
+                    placeInTheListWhereToGo = bestPlaceToTake(board);
+                }
             }
 
             return placeInTheListWhereToGo;
@@ -271,9 +277,13 @@ namespace TikTakToeAI
             int maxindex = 0;
             int maxvalue = valueList[0];
             for (int i = 1; i < valueList.Count; i++){
-                if(maxvalue < valueList[i]){
-                    maxvalue = valueList[i];
-                    maxindex = i;
+                if (checkingIfSelectedWindowIsEmpty(i, boardList).Equals(true))
+                {
+                    if (maxvalue <= valueList[i]) // buvo <
+                    {
+                        maxvalue = valueList[i];
+                        maxindex = i;
+                    }
                 }
             }
             int lastWindow = lastEmptyWindow(boardList);
