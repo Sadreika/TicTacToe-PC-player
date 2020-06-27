@@ -82,61 +82,15 @@ namespace TikTakToeAIUnitTest
                 board.Add(" ");
             }
             board[0] = "X";
-            board[1] = "O";
-            bool result = program.checkingIfOtherPlayerWillWinNextTurn(board);
-
-            Assert.AreEqual(result, false);
-        }
-
-        [TestMethod]
-        public void checkingIfOtherPlayerWillWinNextTurn_2()
-        {
-            TikTakToeAI.Program program = new TikTakToeAI.Program();
-            List<string> board = new List<string>();
-            for (int i = 0; i < 9; i++)
-            {
-                board.Add(" ");
-            }
-            board[0] = "X";
-            board[1] = "O";
-            board[2] = "X";
-            bool result = program.checkingIfOtherPlayerWillWinNextTurn(board);
-
-            Assert.AreEqual(result, false);
-        }
-
-        [TestMethod]
-        public void checkingIfOtherPlayerWillWinNextTurn_3()
-        {
-            TikTakToeAI.Program program = new TikTakToeAI.Program();
-            List<string> board = new List<string>();
-            for (int i = 0; i < 9; i++)
-            {
-                board.Add(" ");
-            }
-            board[0] = "X";
             board[1] = " ";
             board[2] = "X";
-            bool result = program.checkingIfOtherPlayerWillWinNextTurn(board);
+            string pcPlayerSymbol = "X";
+            bool result_1 = program.checkingIfOtherPlayerWillWinNextTurn(pcPlayerSymbol, board);
+            pcPlayerSymbol = "O";
+            bool result_2 = program.checkingIfOtherPlayerWillWinNextTurn(pcPlayerSymbol, board);
 
-            Assert.AreEqual(result, true);
-        }
-
-        [TestMethod]
-        public void checkingIfOtherPlayerWillWinNextTurn_4()
-        {
-            TikTakToeAI.Program program = new TikTakToeAI.Program();
-            List<string> board = new List<string>();
-            for (int i = 0; i < 9; i++)
-            {
-                board.Add(" ");
-            }
-            board[0] = " ";
-            board[1] = "X";
-            board[2] = "X";
-            bool result = program.checkingIfOtherPlayerWillWinNextTurn(board);
-
-            Assert.AreEqual(result, true);
+            Assert.AreEqual(result_1, false);
+            Assert.AreEqual(result_2, true);
         }
 
         [TestMethod]
@@ -346,28 +300,6 @@ namespace TikTakToeAIUnitTest
 
             Assert.AreEqual(result, 8);
         }
-
-      /*  [TestMethod]
-        public void WhereToGo_Final_4()
-        {
-            for (int i = 0; i < 9; i++)
-            {
-                board.Add(" ");
-            }
-            board[0] = "X";
-            board[1] = " ";
-            board[2] = "O";
-            board[3] = " ";
-            board[4] = "X";
-            board[5] = " ";
-            board[6] = "X";
-            board[7] = " ";
-            board[8] = "O";
-
-            int result = program.whereToGo(board);
-
-            Assert.AreEqual(result, 3);
-        }*/
 
         [TestMethod]
         public void WhereToGo_Final_5()
